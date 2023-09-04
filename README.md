@@ -7,14 +7,16 @@ Estudantes do meu coração,
 Estou querendo montar um e-commerce de itens espaciais e vocês serão responsáveis por essa construção. 
 Pretendo montar diferentes linhas de produtos. 
 
-As possíveis linhas de produto são:
-- Satélites antigos [✅ - IMPLEMENTADO];
-- Roupas espaciais;
-- Camisetas com estampas divertidas relacionadas ao espaço;
-- Viagens espaciais;
-- Meteoritos / aerolitos como pedras preciosas;
-- Brinquedos e produtos infantis temáticos;
-- Naves / Foguetes / Ônibus espaciais [✅ - IMPLEMENTADO];
+<ul>
+  <h1>As possíveis linhas de produto são:</h1>
+  <li>- Satélites antigos [✅ - IMPLEMENTADO];</li>
+  <li>- Roupas espaciais;</li>
+  <li>- Camisetas com estampas divertidas relacionadas ao espaço;</li>
+  <li>- Viagens espaciais;</li>
+  <li>- Meteoritos / aerolitos como pedras preciosas;</li>
+  <li>- Brinquedos e produtos infantis temáticos;</li>
+  <li>- Naves / Foguetes / Ônibus espaciais [✅ - IMPLEMENTADO];</li>
+</ul>
 
 Escolham uma linha dentre essas, e criem um e-commerce de acordo com a lista de requisitos.
 
