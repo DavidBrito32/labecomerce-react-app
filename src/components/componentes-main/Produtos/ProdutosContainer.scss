@@ -1,0 +1,38 @@
+.Produtos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
+  padding: 40px 50px;
+  transition-duration: 400ms;
+  border-top: 2px solid rgb(26, 255, 0);
+
+  h2 {
+    width: 100%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 1s;
+  }
+
+    .pagina{
+      text-align: right;
+      color: #648000;
+      font-weight: bold;
+      font-size: 1.5rem;
+
+          &:hover{
+            color: red;
+          }
+    }
+}
