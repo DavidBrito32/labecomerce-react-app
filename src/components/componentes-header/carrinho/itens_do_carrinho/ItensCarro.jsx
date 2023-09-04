@@ -1,0 +1,64 @@
+import { useState } from "react";
+import "./ItensCarro.scss";
+import trash from "../../../../assets-img/icons/trash icons.png";
+
+const ItensCarro = (props) => {
+  const [Variavel, setVariavel] = useState(0);
+
+  const excluir = (newItem) => {
+    const carrinho = props.objeto.filter((item) => item.id !== newItem);
+    props.modificaCarro(carrinho);
+    localStorage.setItem('armazenaCarro', JSON.stringify(carrinho));
+  };
+
+  const incrementador = () => {
+    if (Variavel >= 0) {
+      setVariavel(Variavel + 1);
+    }
+  };
+
+  const decrementador = () => {
+    if (Variavel > 0) {
+      setVariavel(Variavel - 1);
+    } else if (Variavel < 1) {
+      alert("Inclua pelo menos um produto");
+      setVariavel(1);
+    }
+  };
+
+  return (
+    <div className="ItensCarro">
+      <div className="Id-produto">
+        <div className="imagem">
+          <img src={props.imagem} alt="imagem" />
+        </div>
+        <div className="prd">
+          <h1>{props.nome}</h1>
+          <h2>
+            {props.category} <span>{props.classificacao}</span>
+          </h2>
+          <p>{props.descricao}</p>
+        </div>
+      </div>
+      <div className="finalizar">
+        <div className="quantidade">
+          <h4>
+            Valor: <span>{props.preco}</span>
+          </h4>
+          <button onClick={decrementador}>-</button>
+          <p>{Variavel}</p>
+          <button onClick={incrementador}>+</button>
+        </div>
+
+        <div className="compra">
+          <a onClick={(id) => excluir(props.id)} href="#!">
+            <img src={trash} alt="excluir" title="remover item" />
+          </a>
+          <br />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ItensCarro;

@@ -1,0 +1,85 @@
+@import "../../../../modulo_scss/variables/colorPaint.scss";
+
+.ListMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  transition-duration: 600ms;
+
+  li {
+    &:hover {
+      border-bottom: 1px solid $Almost-Gray;
+    }
+  }
+
+  a {
+    font-size: 1.2rem;
+    color: $Primary-color;
+
+    img{
+      width: 60px;
+    }
+
+    &:hover {
+      color: $Secundary-color;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .ListMenu {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    flex-direction: column;
+    right: 0px;
+    top: 12vh;
+    width: 0%;
+    height: calc(100vh - 12vh);
+    background-color: $Canadian-Blue-five;
+    overflow: hidden;
+    // z-index: 100;
+
+    &.active {
+      width: 100%;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
+  .ListMenu {
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 0vh;
+    position: absolute;
+    top: 12vh;
+    right: 0;
+    background-color: $Canadian-Blue-five;
+    overflow: hidden;
+
+    a {
+      font-size: 1.3rem;
+    }
+
+    &.active {
+      top: 12vh;
+      height: 20vh;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 758px) and (max-device-width: 1024px) {
+  .ListMenu {
+    height: 100%;
+    a {
+      font-size: 1rem;
+    }
+  }
+}

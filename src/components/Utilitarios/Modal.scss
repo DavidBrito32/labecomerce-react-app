@@ -1,0 +1,67 @@
+.Container-Modal {
+  width: 100%;
+  top: 12vh;
+  height: calc(100vh - 12vh);
+  background-color: #000000a2;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 600ms;
+
+  .Exibir {
+    width: 85%;
+    height: 85%;
+    border-radius: 16px;
+    background-color: #ffffff;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 160;
+
+      .Fechar{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid black;
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        cursor: pointer;
+        z-index: 4;
+        
+        img{
+          width: 85%;
+          height: 85%;
+          transition-duration: 200ms;
+
+              &:hover{
+                transform: scale(1.2);
+              }
+          }
+
+      }
+
+      &::-webkit-scrollbar{
+        width: 10px;
+        background-color: #ffffff03;
+        transition-duration: 400ms;
+        z-index: -10;
+      }
+  
+      &::-webkit-scrollbar-thumb{
+        background-color: rgb(0, 26, 102);
+        border-radius: 8px;
+      }
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
