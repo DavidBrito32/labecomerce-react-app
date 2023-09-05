@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import "./ProdutosContainer.scss";
 import { ListarProdutos } from "./ListaProdutos";
 import Card from "./Card";
@@ -21,61 +22,81 @@ const ProdutosContainer = (props) => {
     setValor(e.target.value);
   };
 
-  const produtosListados = ListarProdutos.filter((item) =>
-    item.nomeProduto.toLowerCase().includes(props.search.toLowerCase())
-  ).map((item) => (
-    <li key={item.id}>
-      <Card
-        comprasCarro={props.comprasCarro}
-        nomeProduto={item.nomeProduto}
-        rate={item.rate}
-        descricao={item.descricao}
-        image={item.image}
-        precoUnitario={FormataMoeda(item.precoUnitario)}
-        desconto={FormataMoeda(item.desconto)}
-        promo={item.promocao}
-        objeto={item}
-        carro={props.carro}
-        categoria={item.categoria}
-      />
-    </li>
-  ));
+  const produtosListados = ListarProdutos.filter((item) => {
+    if (props.search !== "") {
+      return item.nomeProduto
+        .toLowerCase()
+        .includes(props.search.toLowerCase());
+    } else {
+      return item;
+    }
+  })
+    .filter((item) => {
+      if (valor > 0) {
+        return item.precoUnitario <= valor;
+      } else {
+        return item;
+      }
+    })
+    .filter((item) => {
+      if (valor === "promocao") {
+        return item.promocao === true;
+      } else {
+        return item;
+      }
+    })
+    .sort((valor1, valor2) => {
+      switch (valor) {
+        case "menor":
+          return valor1 - valor2;
 
-  const select = ListarProdutos.filter(
-    (item) => item.precoUnitario < valor || (item.promocao && valor)
-  ).map((item) => (
-    <li key={item.id}>
-      <Card
-        comprasCarro={props.comprasCarro}
-        nomeProduto={item.nomeProduto}
-        rate={item.rate}
-        descricao={item.descricao}
-        image={item.image}
-        precoUnitario={FormataMoeda(item.precoUnitario)}
-        desconto={FormataMoeda(item.desconto)}
-        promo={item.promocao}
-        objeto={item}
-        carro={props.carro}
-        categoria={item.categoria}
-      />
-    </li>
-  ));
+        default:
+      }
+    })
+    .sort(() => {
+      if (valor === "menor") {
+        return 0;
+      } else if (valor === "maior") {
+        return -1;
+      }
+    })
+    .map((item) => (
+      <li key={item.id}>
+        <Card
+          comprasCarro={props.comprasCarro}
+          nomeProduto={item.nomeProduto}
+          rate={item.rate}
+          descricao={item.descricao}
+          image={item.image}
+          precoUnitario={FormataMoeda(item.precoUnitario)}
+          desconto={FormataMoeda(item.desconto)}
+          promo={item.promocao}
+          objeto={item}
+          carro={props.carro}
+          categoria={item.categoria}
+        />
+      </li>
+    ));
 
   return (
     <>
       <div className="Produtos">
         <h2>
           Produtos
-          <Selecao onChange={(e) => filtroValor(e)}>
-            <option value={3000000000}>Selecione</option>
-            <option value={"true"}>Promoção</option>
-            <option value={500000}>De 0 Ate $-500.000</option>
-            <option value={1000000}>até $-1.000.000</option>
-            <option value={130000000}>Ate $-13.000.000</option>
-            <option value={500000000}>até $- 500.000.000.000</option>
+          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
+            <option value={0}>Selecione</option>
+            <option value={"promocao"}>Itens em promoção</option>
+            <option value="menor">Crescente</option>
+            <option value="maior">Decrecente</option>
+            <option value={2000}>De 0 Ate $- 2.000,00</option>
+            <option value={15000}> Ate $- 15.000,00</option>
+            <option value={30000}> Ate $- 30.000,00</option>
+            <option value={50000}>até $- 50.000,00</option>
+            <option value={100000}>Ate $- 100.000,00</option>
+            <option value={500000}>até $- 500.000,00</option>
           </Selecao>
         </h2>
-        <ul>{select.length > 0 ? select : produtosListados}</ul>
+        <ul>{produtosListados}</ul>
 
         <a className="pagina" href="#!">
           Ver lista completa
