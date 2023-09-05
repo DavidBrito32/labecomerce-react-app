@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import "./ProdutosContainer.scss";
 import { ListarProdutos } from "./ListaProdutos";
 import Card from "./Card";
@@ -21,61 +22,61 @@ const ProdutosContainer = (props) => {
     setValor(e.target.value);
   };
 
-  const produtosListados = ListarProdutos
-  .filter(item => {
-    if(props.search !== ""){
-      return (item.nomeProduto.toLowerCase().includes(props.search.toLowerCase()))
-    }else{
-      return item
+  const produtosListados = ListarProdutos.filter((item) => {
+    if (props.search !== "") {
+      return item.nomeProduto
+        .toLowerCase()
+        .includes(props.search.toLowerCase());
+    } else {
+      return item;
     }
   })
-  .filter(item => {
-    if(valor > 0){
-      return item.precoUnitario <= valor  
-    }else{
-      return item
-    }
-  })
-  .filter(item => {
-    if(valor === "promocao"){
-      return item.promocao === true
-    }else{
-      return item
-    }
-  })
-  .sort((valor1, valor2) => {
-    switch(valor){
-      case "menor":
-        return valor1 - valor2
-      
+    .filter((item) => {
+      if (valor > 0) {
+        return item.precoUnitario <= valor;
+      } else {
+        return item;
+      }
+    })
+    .filter((item) => {
+      if (valor === "promocao") {
+        return item.promocao === true;
+      } else {
+        return item;
+      }
+    })
+    .sort((valor1, valor2) => {
+      switch (valor) {
+        case "menor":
+          return valor1 - valor2;
+
         default:
-          
-    }
-  })
-  .sort(() => {
-    if(valor === "menor"){
-      return 0
-    }else if(valor === "maior"){
-      return -1
-    }
-  })
-  .map((item) => (
-    <li key={item.id}>
-      <Card
-        comprasCarro={props.comprasCarro}
-        nomeProduto={item.nomeProduto}
-        rate={item.rate}
-        descricao={item.descricao}
-        image={item.image}
-        precoUnitario={FormataMoeda(item.precoUnitario)}
-        desconto={FormataMoeda(item.desconto)}
-        promo={item.promocao}
-        objeto={item}
-        carro={props.carro}
-        categoria={item.categoria}
-      />
-    </li>
-  ))
+      }
+    })
+    .sort(() => {
+      if (valor === "menor") {
+        return 0;
+      } else if (valor === "maior") {
+        return -1;
+      }
+    })
+    .map((item) => (
+      <li key={item.id}>
+        <Card
+          comprasCarro={props.comprasCarro}
+          nomeProduto={item.nomeProduto}
+          rate={item.rate}
+          descricao={item.descricao}
+          image={item.image}
+          precoUnitario={FormataMoeda(item.precoUnitario)}
+          desconto={FormataMoeda(item.desconto)}
+          promo={item.promocao}
+          objeto={item}
+          carro={props.carro}
+          categoria={item.categoria}
+        />
+      </li>
+    ));
 
   return (
     <>
@@ -92,7 +93,7 @@ const ProdutosContainer = (props) => {
             <option value={30000}> Ate $- 30.000,00</option>
             <option value={50000}>até $- 50.000,00</option>
             <option value={100000}>Ate $- 100.000,00</option>
-            <option value={1000000}>até $- 1.000.000,00</option>
+            <option value={500000}>até $- 500.000,00</option>
           </Selecao>
         </h2>
         <ul>{produtosListados}</ul>
