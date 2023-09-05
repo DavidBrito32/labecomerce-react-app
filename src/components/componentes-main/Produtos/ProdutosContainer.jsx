@@ -43,6 +43,22 @@ const ProdutosContainer = (props) => {
       return item
     }
   })
+  .sort((valor1, valor2) => {
+    switch(valor){
+      case "menor":
+        return valor1 - valor2
+      
+        default:
+          
+    }
+  })
+  .sort(() => {
+    if(valor === "menor"){
+      return 0
+    }else if(valor === "maior"){
+      return -1
+    }
+  })
   .map((item) => (
     <li key={item.id}>
       <Card
@@ -66,9 +82,11 @@ const ProdutosContainer = (props) => {
       <div className="Produtos">
         <h2>
           Produtos
-          <Selecao onChange={(e) => filtroValor(e)}>
+          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
             <option value={0}>Selecione</option>
             <option value={"promocao"}>Itens em promoção</option>
+            <option value="menor">Crescente</option>
+            <option value="maior">Decrecente</option>
             <option value={2000}>De 0 Ate $- 2.000,00</option>
             <option value={15000}> Ate $- 15.000,00</option>
             <option value={30000}> Ate $- 30.000,00</option>
