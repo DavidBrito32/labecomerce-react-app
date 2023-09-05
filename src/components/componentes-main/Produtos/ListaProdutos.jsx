@@ -133,7 +133,7 @@ export const ListarProdutos = [
     id: 11,
     image: `${img11}`,
     nomeProduto: "Sonda Curiosity",
-    precoUnitario: 100000,
+    precoUnitario: 1000000,
     categoria: "NASA",
     descricao: "1° Sonda a entrar com sucesso na orbita de jupter",
     desconto: 1000000,
