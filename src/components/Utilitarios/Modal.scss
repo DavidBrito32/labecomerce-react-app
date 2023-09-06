@@ -11,7 +11,6 @@
   visibility: hidden;
   opacity: 0;
   transition-duration: 600ms;
-
   .Exibir {
     width: 85%;
     height: 85%;
@@ -19,7 +18,7 @@
     background-color: #ffffff;
     overflow-y: scroll;
     position: relative;
-    z-index: 160;
+    z-index: 9000;
 
       .Fechar{
         width: 40px;
@@ -64,4 +63,11 @@
     visibility: visible;
     opacity: 1;
   }
+
+    @media only screen and (max-width: 480px){
+      top: 20vh;
+        .Exibir{
+          width: 100%;
+        }
+    }
 }

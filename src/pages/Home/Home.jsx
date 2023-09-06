@@ -40,6 +40,7 @@ function Home() {
         modal={setAbreModal}
         pesquisa={setSearch}
         search={search}
+        armazenaCarro={armazenaCarro}
       />
       <Main
         comprasCarro={setArmazenaCarro}

@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from '../Layouts/'
 import Home from "../pages/Home/Home";
-
-import Error404 from "../pages/Error";
+import {Error} from '../pages/Error/Error'
 
 const Ways = () => {
     return (
@@ -11,9 +10,8 @@ const Ways = () => {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="/contact" element={""} />
                     </Route>   
-                    <Route path="*" element={<Error404 />}/>
+                    <Route path="*" element={<Error />}/>
                 </Routes>
             </BrowserRouter>                
         </>

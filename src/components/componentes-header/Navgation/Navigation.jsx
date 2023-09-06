@@ -3,7 +3,7 @@ import Burguer from "./MenuHamburguer/Burguer";
 import ListMenu from "./ListMenu/ListMenu";
 import Search from "./Search/Search";
 
-const Navigation = ({ burguer, abreBurguer, pesquisa, search, modal, carrinho }) => {
+const Navigation = ({ burguer, abreBurguer, pesquisa, search, modal, carrinho, armazenaCarro }) => {
   return (
     <>
       <Search
@@ -13,7 +13,7 @@ const Navigation = ({ burguer, abreBurguer, pesquisa, search, modal, carrinho })
         burguer={burguer}
       />
       <Burguer burguer={burguer} abreBurguer={abreBurguer} />
-      <ListMenu carrinho={carrinho} burguer={burguer} />
+      <ListMenu carrinho={carrinho} burguer={burguer} armazenaCarro={armazenaCarro} />
     </>
   );
 };

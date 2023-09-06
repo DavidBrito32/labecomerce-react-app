@@ -9,9 +9,28 @@
   transition-duration: 600ms;
 
   li {
+    position: relative;
     &:hover {
       border-bottom: 1px solid $Almost-Gray;
     }
+    .contadorCart{
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      background-color: rgb(255, 98, 0);
+      right: 0px;
+      top: 0px;
+      cursor: pointer;
+      transition: all ease 200ms;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: .9rem;
+      font-weight: bolder;
+      color: white;
+  }
   }
 
   a {

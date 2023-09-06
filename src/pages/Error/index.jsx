@@ -1,11 +1,11 @@
 
-const Error404 = () => {
-    return (
-        <>
-            <h1>Desculpe a pagina solicitada não existe</h1>
-            <a href="/">Voltar</a>
-        </>
-    )
+const ErrorPage = () => {
+  return (
+    <div>
+        <h1>Desculpe esta pagina não existe ou esta em manutenção!</h1>
+        <a href="/">Voltar</a>
+    </div>
+  )
 }
 
-export default Error404;
+export default ErrorPage;

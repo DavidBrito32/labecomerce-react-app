@@ -26,6 +26,7 @@ const Card = (props) => {
       </div>
       <h4>{props.nomeProduto}</h4>
       <p>{props.descricao}</p>
+      <p className="category">{props.categoria}</p>
       <h5>
         <strong>{props.precoUnitario}</strong>{" "}
         <p>

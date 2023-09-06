@@ -3,7 +3,17 @@ import "./ItensCarro.scss";
 import trash from "../../../../assets-img/icons/trash icons.png";
 
 const ItensCarro = (props) => {
-  const [Variavel, setVariavel] = useState(0);
+  const [Variavel, setVariavel] = useState(1);
+
+  const FormataMoeda = (valor) => {
+    if (valor > 0) {
+      let numberFormat = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(valor);
+      return numberFormat;
+    }
+  };
 
   const excluir = (newItem) => {
     const carrinho = props.objeto.filter((item) => item.id !== newItem);
@@ -21,7 +31,7 @@ const ItensCarro = (props) => {
     if (Variavel > 0) {
       setVariavel(Variavel - 1);
     } else if (Variavel < 1) {
-      alert("Inclua pelo menos um produto");
+      excluir(props.id)
       setVariavel(1);
     }
   };
@@ -43,7 +53,7 @@ const ItensCarro = (props) => {
       <div className="finalizar">
         <div className="quantidade">
           <h4>
-            Valor: <span>{props.preco}</span>
+            Valor: <span>{Variavel > 0 ? FormataMoeda(props.preco * Variavel)  : FormataMoeda(props.preco)}</span>
           </h4>
           <button onClick={decrementador}>-</button>
           <p>{Variavel}</p>

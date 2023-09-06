@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const ProdutosContainer = (props) => {
   const [valor, setValor] = useState();
+  console.log(valor);
 
   const FormataMoeda = (valor) => {
     if (valor > 0) {
@@ -34,6 +35,9 @@ const ProdutosContainer = (props) => {
     .filter((item) => {
       if (valor > 0) {
         return item.precoUnitario <= valor;
+      } else if(item.categoria.includes(valor)){
+        console.log("Entrou aqui");
+          return item.categoria === valor
       } else {
         return item;
       }
@@ -41,15 +45,14 @@ const ProdutosContainer = (props) => {
     .filter((item) => {
       if (valor === "promocao") {
         return item.promocao === true;
-      } else {
-        return item;
+      }else{
+        return item
       }
     })
     .sort((valor1, valor2) => {
       switch (valor) {
         case "menor":
           return valor1 - valor2;
-
         default:
       }
     })
@@ -94,6 +97,16 @@ const ProdutosContainer = (props) => {
             <option value={50000}>até $- 50.000,00</option>
             <option value={100000}>Ate $- 100.000,00</option>
             <option value={500000}>até $- 500.000,00</option>
+          </Selecao>
+
+          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
+            <option value={0}>Selecione por categoria</option>
+            {ListarProdutos
+            .map((item) => (
+              <option key={item.id} value={item.categoria}>
+                {item.categoria}
+              </option>
+            ))}
           </Selecao>
         </h2>
         <ul>{produtosListados}</ul>

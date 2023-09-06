@@ -71,7 +71,7 @@
         opacity: 0;
         transition-duration: 400ms;
         overflow: hidden;
-        z-index: 5;
+        z-index: 10000;
 
             &.active{
                 width: 15rem;
