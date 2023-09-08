@@ -114,10 +114,6 @@ const ProdutosContainer = (props) => {
           </div>
         </h2>
         <ul>{produtosListados}</ul>
-
-        <a className="pagina" href="#!">
-          Ver lista completa
-        </a>
       </div>
     </>
   );
