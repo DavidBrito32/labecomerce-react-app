@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const ProdutosContainer = (props) => {
   const [valor, setValor] = useState();
-  console.log(valor);
+  const [category, setCategory] = useState("");
 
   const FormataMoeda = (valor) => {
     if (valor > 0) {
@@ -23,7 +23,8 @@ const ProdutosContainer = (props) => {
     setValor(e.target.value);
   };
 
-  const produtosListados = ListarProdutos.filter((item) => {
+  const produtosListados = ListarProdutos
+    .filter((item) => {
     if (props.search !== "") {
       return item.nomeProduto
         .toLowerCase()
@@ -31,38 +32,42 @@ const ProdutosContainer = (props) => {
     } else {
       return item;
     }
-  })
+     }) //FILTRO DA BARRA DE PESQUISA
     .filter((item) => {
       if (valor > 0) {
         return item.precoUnitario <= valor;
-      } else if(item.categoria.includes(valor)){
+      } else if (item.categoria.includes(valor)) {
         console.log("Entrou aqui");
-          return item.categoria === valor
+        return item.categoria === valor;
       } else {
         return item;
       }
-    })
+    }) // FILTRO VALORES
     .filter((item) => {
       if (valor === "promocao") {
         return item.promocao === true;
+      } else {
+        return item;
+      }
+    }) //FILTRO PARA PRODUTOS EM PROMOÇÃO
+    .filter((item) => {
+      if(category !== ""){
+        return item.categoria === category
       }else{
         return item
       }
-    })
-    .sort((valor1, valor2) => {
-      switch (valor) {
-        case "menor":
-          return valor1 - valor2;
-        default:
-      }
-    })
-    .sort(() => {
+    }) //FILTRO DAS CATEGORIAS
+    .sort((a, b) => {
       if (valor === "menor") {
-        return 0;
+        if(a < b){
+          return 1
+        }
       } else if (valor === "maior") {
-        return -1;
+        if(a > b){
+          return 1
+        }
       }
-    })
+    })//ORDENAÇÃO
     .map((item) => (
       <li key={item.id}>
         <Card
@@ -98,15 +103,15 @@ const ProdutosContainer = (props) => {
             <option value={100000}>Ate $- 100.000,00</option>
             <option value={500000}>até $- 500.000,00</option>
           </Selecao>
-
-          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
-            <option value={0}>Selecione por categoria</option>
-            {ListarProdutos
-            .map((item) => (
-              <option key={item.id} value={item.categoria}>
-                {item.categoria}
-              </option>
-            ))}
+          <Selecao
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value={""}>Selecione por categoria</option>
+            <option value="Google">Google</option>
+            <option value="Monument">Monument</option>
+            <option value="NASA">NASA</option>
+            <option value="Roscosmos">Roscosmos</option>
           </Selecao>
         </h2>
         <ul>{produtosListados}</ul>
