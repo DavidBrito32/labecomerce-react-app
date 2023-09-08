@@ -1,17 +1,51 @@
 import "./Carrinho.scss";
 import ItensCarro from "./itens_do_carrinho/ItensCarro";
 import Fechar from "../../../assets-img/icons/botao fechar.png";
+import { useEffect, useState } from "react";
 
 const Carrinho = (props) => {
+  const [subTotal, setSubtotal] = useState(0);  
+  const FormataMoeda = (valor) => {
+    if (valor > 0) {
+      let numberFormat = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(valor);
+      return numberFormat;
+    }
+  };
+  const manipulaTotal = (valor) => {
+    const precoTotal = valor;
+      return setSubtotal(precoTotal);
+  } 
+  console.log(subTotal);
+
   const comprar = () => {
     alert(
       `Obrigado Por comprar no Labecomerce! Você será Redirecionado para a pagina do pagamento!`
     );
     props.modificaCarro([]);
     props.abreCarro();
+    setSubtotal(0);
+    localStorage.setItem('subTotal', JSON.stringify(0));
+    localStorage.setItem('armazenaCarro', JSON.stringify([]));
   };
-
   const newObject = props.objeto;
+
+  useEffect(() => {
+    if(subTotal > 0){
+      localStorage.setItem('subTotal', JSON.stringify(subTotal));
+    }
+  }, [subTotal]);
+
+  useEffect(()=>{
+    if(localStorage.getItem('subTotal') !== null){
+      const qqq = localStorage.getItem('subTotal');
+      setSubtotal(JSON.parse(qqq));
+    }else{
+      localStorage.setItem('subTotal', JSON.stringify(0));
+    }
+  }, [])
 
   return (
     <>
@@ -36,6 +70,7 @@ const Carrinho = (props) => {
                     descricao={item.descricao}
                     nome={item.nomeProduto}
                     objeto={props.objeto}
+                    manipulaTotal={manipulaTotal}
                   />
                 </li>
               ))
@@ -44,6 +79,8 @@ const Carrinho = (props) => {
         <button onClick={comprar} className="Final">
           Finalizar todos
         </button>
+
+        {subTotal > 0 ? <span className="subTotal">Total Carrinho: <span className="carts">{FormataMoeda(subTotal)}</span></span> : ""}
       </div>
     </>
   );

@@ -18,7 +18,9 @@ const ItensCarro = (props) => {
   const excluir = (newItem) => {
     const carrinho = props.objeto.filter((item) => item.id !== newItem);
     props.modificaCarro(carrinho);
+    props.manipulaTotal(0)
     localStorage.setItem('armazenaCarro', JSON.stringify(carrinho));
+    localStorage.setItem('subTotal', JSON.stringify(0));
   };
 
   const incrementador = () => {
@@ -33,8 +35,15 @@ const ItensCarro = (props) => {
     } else if (Variavel < 1) {
       excluir(props.id)
       setVariavel(1);
+      props.manipulaTotal(0)
+      
     }
   };
+
+  const soma = Variavel * Number(props.preco);
+
+  props.manipulaTotal(soma);
+
 
   return (
     <div className="ItensCarro">
