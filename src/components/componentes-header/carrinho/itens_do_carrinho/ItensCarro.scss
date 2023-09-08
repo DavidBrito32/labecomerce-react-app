@@ -161,13 +161,20 @@
 
             .Id-produto{
                 .imagem{
-                    width: 35%;
+                    width: 30%;
                 }
 
                 .prd{
                     flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     & h1{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         text-align: center;
+                        font-size: 1rem;
                     }
 
                     & h2, & p{

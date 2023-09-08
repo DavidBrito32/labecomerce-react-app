@@ -57,15 +57,11 @@ const ProdutosContainer = (props) => {
         return item
       }
     }) //FILTRO DAS CATEGORIAS
-    .sort((a, b) => {
+    .sort(() => {
       if (valor === "menor") {
-        if(a < b){
           return 1
-        }
       } else if (valor === "maior") {
-        if(a > b){
-          return 1
-        }
+          return -1
       }
     })//ORDENAÇÃO
     .map((item) => (
@@ -91,6 +87,8 @@ const ProdutosContainer = (props) => {
       <div className="Produtos">
         <h2>
           Produtos
+
+          <div className="selects">
           <Selecao value={valor} onChange={(e) => filtroValor(e)}>
             <option value={0}>Selecione</option>
             <option value={"promocao"}>Itens em promoção</option>
@@ -113,6 +111,7 @@ const ProdutosContainer = (props) => {
             <option value="NASA">NASA</option>
             <option value="Roscosmos">Roscosmos</option>
           </Selecao>
+          </div>
         </h2>
         <ul>{produtosListados}</ul>
 

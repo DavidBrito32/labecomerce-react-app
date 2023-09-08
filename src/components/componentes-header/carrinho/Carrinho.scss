@@ -15,6 +15,13 @@
     opacity: 0;
     overflow-y: scroll;
     overflow-x: hidden;
+        .carts{
+            background-color: green;
+            color: rgb(198, 4, 4);
+            font-style: italic;
+            padding: 5px;
+            text-decoration: underline;
+        }
 
         .botaoFechar{
             width: 40px;
@@ -98,6 +105,12 @@
                 }
         }
 
+        .subTotal{
+            font-size: 1rem;
+            font-weight: bold;
+            color: red;
+        }
+
 
           @media only screen and (min-width: 481px) and (max-width: 768px){
             width: 80%;
@@ -110,5 +123,28 @@
             width: 100%;
             left: 50%;
             transform: translate(-50%);
+
+            .Final{
+                margin: 50px 0;
+                width: 100%;
+                height: 50px;
+                border-radius: 8px;
+                border: 2px solid blue;
+                outline: none;
+                cursor: pointer;
+                transition: all ease 200ms;
+                color: black;
+                font-size: 1rem;
+    
+                    &:hover{
+                        background-color: blue;
+                        color: white;
+                        opacity: 95%;
+                    }
+    
+                    &:active{
+                        transform: scale(0.97);
+                    }
+            }
           }
 }

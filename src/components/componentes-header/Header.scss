@@ -11,4 +11,8 @@ header {
   position: sticky;
   z-index: 100;
   padding: 0 50px;
+
+  @media only screen and (max-width: 480px){
+    padding: 0 10px;
+  }
 }
