@@ -27,25 +27,16 @@ const Carrinho = (props) => {
     props.modificaCarro([]);
     props.abreCarro();
     setSubtotal(0);
-    localStorage.setItem('subTotal', JSON.stringify(0));
+    localStorage.setItem('subTotal', JSON.stringify(JSON.parse(localStorage.getItem('subTotal')) || 0));
     localStorage.setItem('armazenaCarro', JSON.stringify([]));
   };
   const newObject = props.objeto;
-
   useEffect(() => {
     if(subTotal > 0){
       localStorage.setItem('subTotal', JSON.stringify(subTotal));
     }
-  }, [subTotal]);
+  }, [subTotal]); //ADICIONA O SUBTOTAL ao localstorage
 
-  useEffect(()=>{
-    if(localStorage.getItem('subTotal') !== null){
-      const qqq = localStorage.getItem('subTotal');
-      setSubtotal(JSON.parse(qqq));
-    }else{
-      localStorage.setItem('subTotal', JSON.stringify(0));
-    }
-  }, [])
 
   return (
     <>

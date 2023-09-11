@@ -56,7 +56,7 @@ const ItensCarro = (props) => {
           <h2>
             {props.category} <span>{props.classificacao}</span>
           </h2>
-          <p>{props.descricao}</p>
+          <p title={props.descricao}>{props.descricao}</p>
         </div>
       </div>
       <div className="finalizar">
