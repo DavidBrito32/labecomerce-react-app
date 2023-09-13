@@ -9,9 +9,9 @@ const Card = (props) => {
     .sort(() => {
       return 0
     })
-
     const newObject = [...order, props.objeto]; 
     props.comprasCarro(newObject);
+    props.setTotal(props.total + props.preco);
   }
 
   return (

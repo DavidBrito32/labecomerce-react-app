@@ -2,7 +2,7 @@ import BannerInicial from "./BannerInicial/BannerInicial";
 import ProdutosContainer from "./Produtos/ProdutosContainer";
 import Modal from "../Utilitarios/Modal";
 
-const Main = ({ search, modal, fechaModal, comprasCarro, carro}) => {
+const Main = ({ search, modal, fechaModal, comprasCarro, carro, total, setTotal}) => {
   return (
     <>
       <BannerInicial />
@@ -19,6 +19,8 @@ const Main = ({ search, modal, fechaModal, comprasCarro, carro}) => {
       comprasCarro={comprasCarro} 
       search={search} 
       carro={carro}
+      total={total}
+      setTotal={setTotal}
       />
     </>
   );

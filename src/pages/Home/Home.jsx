@@ -17,6 +17,8 @@ function Home() {
   const [search, setSearch] = useState("");
   const [abreModal, setAbreModal] = useState(false);
   const [carrinho, setCarrinho] = useState(false);
+  const [total, setTotal] = useState(0);
+  console.log(total);
 
   const abreCarro = () => {
     setCarrinho(!carrinho);
@@ -37,6 +39,8 @@ function Home() {
         search={search}
         fechaModal={setAbreModal}
         carro={armazenaCarro}
+        total={total}
+        setTotal={setTotal}
       />
       <Footer />
       <Carrinho
@@ -44,6 +48,8 @@ function Home() {
         objeto={armazenaCarro}
         abreCarro={abreCarro}
         carrinho={carrinho}
+        total={total}
+        setTotal={setTotal}
       />
     </>
   );
