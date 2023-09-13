@@ -9,6 +9,8 @@ const ProdutosContainer = (props) => {
   const [valor, setValor] = useState();
   const [category, setCategory] = useState("");
 
+  const {total, setTotal} = props;
+
   const FormataMoeda = (valor) => {
     if (valor > 0) {
       let numberFormat = new Intl.NumberFormat("pt-BR", {
@@ -74,10 +76,13 @@ const ProdutosContainer = (props) => {
           image={item.image}
           precoUnitario={FormataMoeda(item.precoUnitario)}
           desconto={FormataMoeda(item.desconto)}
+          preco={item.precoUnitario}
           promo={item.promocao}
           objeto={item}
           carro={props.carro}
           categoria={item.categoria}
+          total={total}
+          setTotal={setTotal}
         />
       </li>
     ));
@@ -110,6 +115,7 @@ const ProdutosContainer = (props) => {
             <option value="Monument">Monument</option>
             <option value="NASA">NASA</option>
             <option value="Roscosmos">Roscosmos</option>
+            <option value="Starship">Starship</option>
           </Selecao>
           </div>
         </h2>
