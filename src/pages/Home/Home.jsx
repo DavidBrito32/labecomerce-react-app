@@ -17,8 +17,11 @@ function Home() {
   const [search, setSearch] = useState("");
   const [abreModal, setAbreModal] = useState(false);
   const [carrinho, setCarrinho] = useState(false);
-  const [total, setTotal] = useState(0);
-  console.log(total);
+  const [total, setTotal] = useState( JSON.parse(localStorage.getItem('total')) || 0);
+  
+  useEffect(()=>{
+      localStorage.setItem('total', total);
+  }, [total])
 
   const abreCarro = () => {
     setCarrinho(!carrinho);
