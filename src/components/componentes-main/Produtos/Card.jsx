@@ -3,6 +3,7 @@ import "boxicons";
 import oferta from "../../../assets-img/icons/Design sem nome.svg";
 
 const Card = (props) => {
+  
   function addCarrinho() {
     let order = props.carro
     .filter((item) => item !== props.objeto)
@@ -10,8 +11,7 @@ const Card = (props) => {
       return 0
     })
     const newObject = [...order, props.objeto]; 
-    props.comprasCarro(newObject);
-    props.setTotal(props.total + props.preco);
+    props.comprasCarro(newObject);    
   }
 
   return (

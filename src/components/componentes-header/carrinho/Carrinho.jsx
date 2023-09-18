@@ -12,7 +12,11 @@ const Carrinho = (props) => {
       return numberFormat;
     }
   };
+
+
   const { total, setTotal } = props;
+
+
   const comprar = () => {
     alert(
       `Obrigado Por comprar no Labecomerce! Você será Redirecionado para a pagina do pagamento!`
@@ -26,7 +30,15 @@ const Carrinho = (props) => {
     localStorage.setItem("armazenaCarro", JSON.stringify([]));
     setTotal(0);
   };
+
+
+
+
   const newObject = props.objeto;
+
+  const totalPrice = newObject.reduce((acumulator, item) => item.precoUnitario + acumulator, 0);
+
+
   return (
     <>
       <div className={props.carrinho ? "Carrinho active" : "Carrinho"}>
@@ -60,9 +72,9 @@ const Carrinho = (props) => {
         <button onClick={comprar} className="Final">
           Finalizar todos
         </button>
-        {total > 0 ? (
+        {totalPrice > 0 ? (
           <span className="subTotal">
-            Total Carrinho: <span className="carts">{FormataMoeda(total)}</span>
+            Total Carrinho: <span className="carts">{FormataMoeda(totalPrice)}</span>
           </span>
         ) : (
           ""
