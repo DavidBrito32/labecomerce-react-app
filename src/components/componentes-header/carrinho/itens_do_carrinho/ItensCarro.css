@@ -1,0 +1,168 @@
+.ItensCarro {
+  margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  background-color: #000c29;
+  border-bottom: 3px solid black;
+  box-shadow: -10px -10px 40px rgba(0, 0, 0, 0.6352941176);
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 20px;
+  border-bottom: 5px solid rgb(255, 225, 0);
+}
+.ItensCarro .Id-produto {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-around;
+  width: 100%;
+  height: 50%;
+}
+.ItensCarro .Id-produto .imagem {
+  width: 20%;
+  height: 100%;
+}
+.ItensCarro .Id-produto .imagem img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+}
+.ItensCarro .Id-produto .prd {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ffffff;
+  color: white;
+}
+.ItensCarro .Id-produto .prd h1 {
+  font-size: 1.4rem;
+}
+.ItensCarro .Id-produto .prd h2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  color: white;
+  font-size: 1rem;
+}
+.ItensCarro .Id-produto .prd p {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ItensCarro .finalizar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.ItensCarro .finalizar .quantidade {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.ItensCarro .finalizar .quantidade h4 {
+  width: 70%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+}
+.ItensCarro .finalizar .quantidade h4 span {
+  color: #67bd77;
+}
+.ItensCarro .finalizar .quantidade p {
+  width: 20%;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  color: white;
+}
+.ItensCarro .finalizar .quantidade button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgb(255, 253, 253);
+  transition: all ease 200ms;
+  color: white;
+}
+.ItensCarro .finalizar .quantidade button:hover {
+  background-color: #000052;
+  color: white;
+}
+.ItensCarro .finalizar .quantidade button:active {
+  transform: scale(0.9);
+}
+.ItensCarro .finalizar .compra {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.ItensCarro .finalizar .compra a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  background-color: #af0000;
+  transition: all ease 300ms;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ItensCarro .finalizar .compra a:active {
+  transform: scale(0.97);
+}
+.ItensCarro .finalizar .compra a img {
+  width: 80%;
+  height: 80%;
+}
+@media only screen and (max-width: 480px) {
+  .ItensCarro {
+    width: 100%;
+  }
+  .ItensCarro .Id-produto .imagem {
+    width: 30%;
+  }
+  .ItensCarro .Id-produto .prd {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ItensCarro .Id-produto .prd h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .ItensCarro .Id-produto .prd h2, .ItensCarro .Id-produto .prd p {
+    display: none;
+  }
+}/*# sourceMappingURL=ItensCarro.css.map */

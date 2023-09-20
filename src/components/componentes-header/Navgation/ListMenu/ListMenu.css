@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/*
+-----> BEM VINDO USUARIO: DESENVOLVA SEUS ARQUIVOS PADRONIZANDO SUAS VARIAVEIS DE COR CENTRALIZADAS EM UM UNICO ARQUIVO... SE ATENTANDO DE SEPARAR VARIAVEIS POR SEÇÃO INDIVIDUAL ATRAVEZ DO SEPARADOR ------
+*/
+.ListMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  transition-duration: 600ms;
+}
+.ListMenu li {
+  position: relative;
+}
+.ListMenu li:hover {
+  border-bottom: 1px solid #eeeeee;
+}
+.ListMenu li .contadorCart {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  background-color: rgb(255, 98, 0);
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+  transition: all ease 200ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bolder;
+  color: white;
+}
+.ListMenu a {
+  font-size: 1.2rem;
+  color: #ff9a52;
+}
+.ListMenu a img {
+  width: 60px;
+}
+.ListMenu a:hover {
+  color: #ff7752;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .ListMenu {
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+    right: 20%;
+    top: 3.5%;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .ListMenu li .contadorCart {
+    width: 20px;
+    height: 20px;
+    right: 5px;
+    top: -5px;
+  }
+  .ListMenu img {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
+  .ListMenu {
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+    right: 40%;
+    top: -45px;
+    height: 25vh;
+    overflow: hidden;
+  }
+  .ListMenu li .contadorCart {
+    width: 30px;
+    height: 30px;
+    right: 0;
+    top: 0px;
+  }
+  .ListMenu img {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media only screen and (min-device-width: 758px) and (max-device-width: 1024px) {
+  .ListMenu {
+    height: 100%;
+  }
+  .ListMenu a {
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=ListMenu.css.map */
