@@ -12,11 +12,7 @@ const Carrinho = (props) => {
       return numberFormat;
     }
   };
-
-
   const { total, setTotal } = props;
-
-
   const comprar = () => {
     alert(
       `Obrigado Por comprar no Labecomerce! Você será Redirecionado para a pagina do pagamento!`
@@ -36,7 +32,7 @@ const Carrinho = (props) => {
 
   const newObject = props.objeto;
 
-  const totalPrice = newObject.reduce((acumulator, item) => item.precoUnitario + acumulator, 0);
+  const totalPrice = newObject.reduce((acumulator, item) => (item.precoUnitario * item.amount) + acumulator, 0);
 
 
   return (
@@ -64,6 +60,8 @@ const Carrinho = (props) => {
                     objeto={props.objeto}
                     setTotal={setTotal}
                     total={total}
+                    amount={item.amount}
+                    carrinho={props.objeto}
                   />
                 </li>
               ))

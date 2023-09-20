@@ -51,6 +51,7 @@ function Home() {
         objeto={armazenaCarro}
         abreCarro={abreCarro}
         carrinho={carrinho}
+        setCarrinho={setCarrinho}
         total={total}
         setTotal={setTotal}
       />
