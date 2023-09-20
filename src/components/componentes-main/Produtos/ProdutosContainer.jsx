@@ -8,7 +8,8 @@ import { useState } from "react";
 const ProdutosContainer = (props) => {
   const [valor, setValor] = useState();
   const [category, setCategory] = useState("");
-
+  const [minFilter, setMinFilter] = useState();
+  const [maxFilter, setMaxFilter] = useState();
   const {total, setTotal} = props;
 
   const FormataMoeda = (valor) => {
@@ -24,6 +25,13 @@ const ProdutosContainer = (props) => {
   const filtroValor = (e) => {
     setValor(e.target.value);
   };
+
+  const filtroMinimo = (e) => {
+    setMinFilter(e.target.value)
+  }
+  const filtroMaximo = (e) => {
+    setMaxFilter(e.target.value)
+  }
 
   const produtosListados = ListarProdutos
     .filter((item) => {
@@ -45,6 +53,20 @@ const ProdutosContainer = (props) => {
         return item;
       }
     }) // FILTRO VALORES
+    .filter((item) =>{
+      if(minFilter > 0 && maxFilter > 0){
+        return item.precoUnitario >= minFilter && item.precoUnitario <= maxFilter
+      }else{
+        return item
+      }
+    }) //Filtrando Valores entre os valores do minimoFilter e maximoFilter
+    .filter((item) => {  
+      if(minFilter > 0 || maxFilter > 0){
+        return item.precoUnitario <= minFilter || item.precoUnitario <= maxFilter
+      }else{
+        return item
+      }
+    })// filtrando items por apenas um dos inputs
     .filter((item) => {
       if (valor === "promocao") {
         return item.promocao === true;
@@ -94,11 +116,12 @@ const ProdutosContainer = (props) => {
           Produtos
 
           <div className="selects">
+          <input type="Number" placeholder="Digite o valor Minimo" value={minFilter} onChange={(e) => filtroMinimo(e)}/>
+          <input type="Number" placeholder="Digite o valor Maximo" value={maxFilter} onChange={(e) => filtroMaximo(e)}/>
+
           <Selecao value={valor} onChange={(e) => filtroValor(e)}>
             <option value={0}>Selecione</option>
             <option value={"promocao"}>Itens em promoção</option>
-            <option value="menor">Crescente</option>
-            <option value="maior">Decrecente</option>
             <option value={2000}>De 0 Ate $- 2.000,00</option>
             <option value={15000}> Ate $- 15.000,00</option>
             <option value={30000}> Ate $- 30.000,00</option>
@@ -106,6 +129,13 @@ const ProdutosContainer = (props) => {
             <option value={100000}>Ate $- 100.000,00</option>
             <option value={500000}>até $- 500.000,00</option>
           </Selecao>
+
+          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
+            <option value="menor">Crescente</option>
+            <option value="maior">Decrecente</option>
+          </Selecao>
+
+
           <Selecao
             value={category}
             onChange={(e) => setCategory(e.target.value)}

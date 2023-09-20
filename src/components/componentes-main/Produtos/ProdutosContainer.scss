@@ -41,6 +41,17 @@
           }
     }
 
+    .selects{
+      input{
+        width: 180px;
+        height: 35px;
+        padding-left: 10px;
+        border: 1px solid blue;
+        background-color: transparent;
+
+      }
+    }
+
     @media only screen and (max-width: 600px){
       h2{
         text-align: center;

@@ -1,11 +1,9 @@
-import { useState } from "react";
+/* eslint-disable array-callback-return */
 import "./ItensCarro.scss";
 import trash from "../../../../assets-img/icons/trash icons.png";
 
 const ItensCarro = (props) => {
-  const [Variavel, setVariavel] = useState(
-    JSON.parse(localStorage.getItem("Variavel")) || 1
-  );
+  console.log(props.objeto);
 
   const FormataMoeda = (valor) => {
     if (valor > 0) {
@@ -25,15 +23,34 @@ const ItensCarro = (props) => {
     console.log(props.total);
   };
 
-  const incrementador = () => {
-    setVariavel(Variavel + 1);
+  const incrementador = (id) => {
+    const newProduct = props.objeto.find((item) => item.id === id);
+    const newCart = props.objeto.map((item) => {
+      if (item.id === id) {
+        return { ...newProduct, amount: newProduct.amount + 1 };
+      } else {
+        return item;
+      }
+    });
+    props.modificaCarro(newCart);
   };
 
-  const decrementador = () => {
-    if (Variavel >= 1) {
-      setVariavel(Variavel - 1);
+  const decrementador = (id) => {
+    const produto = props.objeto.find((item) => item.id === id);
+
+    if (produto.amount > 1) {
+      const newCart = props.objeto.map((item) => {
+        if (item.id === id) {
+          return { ...produto, amount: produto.amount - 1 };
+        } else {
+          return item;
+        }
+      });
+
+      props.modificaCarro(newCart);
     } else {
-      setVariavel(1);
+      const novoCarro = props.objeto.filter((item) => item.id !== id);
+      props.modificaCarro(novoCarro);
     }
   };
 
@@ -56,18 +73,18 @@ const ItensCarro = (props) => {
           <h4>
             Valor:{" "}
             <span>
-              {Variavel > 0
-                ? FormataMoeda(props.preco * Variavel)
-                : FormataMoeda(props.preco)}
+              {props.amount > 0
+                ? FormataMoeda(props.preco * props.amount)
+                : FormataMoeda(props.preco * props.amount)}
             </span>
           </h4>
-          <button onClick={decrementador}>-</button>
-          <p>{Variavel}</p>
-          <button onClick={incrementador}>+</button>
+          <button onClick={() => decrementador(props.id)}>-</button>
+          <p>{props.amount && props.amount}</p>
+          <button onClick={() => incrementador(props.id)}>+</button>
         </div>
 
         <div className="compra">
-          <a onClick={(id) => excluir(props.id)} href="#!">
+          <a onClick={() => excluir(props.id)} href="#!">
             <img src={trash} alt="excluir" title="remover item" />
           </a>
           <br />
