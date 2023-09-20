@@ -10,7 +10,7 @@ const ProdutosContainer = (props) => {
   const [category, setCategory] = useState("");
   const [minFilter, setMinFilter] = useState();
   const [maxFilter, setMaxFilter] = useState();
-  const {total, setTotal} = props;
+  const { total, setTotal } = props;
 
   const FormataMoeda = (valor) => {
     if (valor > 0) {
@@ -27,14 +27,13 @@ const ProdutosContainer = (props) => {
   };
 
   const filtroMinimo = (e) => {
-    setMinFilter(e.target.value)
-  }
+    setMinFilter(e.target.value);
+  };
   const filtroMaximo = (e) => {
-    setMaxFilter(e.target.value)
-  }
+    setMaxFilter(e.target.value);
+  };
 
-  const produtosListados = ListarProdutos
-    .filter((item) => {
+  const produtosListados = ListarProdutos.filter((item) => {
     if (props.search !== "") {
       return item.nomeProduto
         .toLowerCase()
@@ -42,7 +41,7 @@ const ProdutosContainer = (props) => {
     } else {
       return item;
     }
-     }) //FILTRO DA BARRA DE PESQUISA
+  }) //FILTRO DA BARRA DE PESQUISA
     .filter((item) => {
       if (valor > 0) {
         return item.precoUnitario <= valor;
@@ -53,20 +52,24 @@ const ProdutosContainer = (props) => {
         return item;
       }
     }) // FILTRO VALORES
-    .filter((item) =>{
-      if(minFilter > 0 && maxFilter > 0){
-        return item.precoUnitario >= minFilter && item.precoUnitario <= maxFilter
-      }else{
-        return item
+    .filter((item) => {
+      if (minFilter > 0 && maxFilter > 0) {
+        return (
+          item.precoUnitario >= minFilter && item.precoUnitario <= maxFilter
+        );
+      } else {
+        return item;
       }
     }) //Filtrando Valores entre os valores do minimoFilter e maximoFilter
-    .filter((item) => {  
-      if(minFilter > 0 || maxFilter > 0){
-        return item.precoUnitario <= minFilter || item.precoUnitario <= maxFilter
-      }else{
-        return item
+    .filter((item) => {
+      if (minFilter > 0 || maxFilter > 0) {
+        return (
+          item.precoUnitario <= minFilter || item.precoUnitario <= maxFilter
+        );
+      } else {
+        return item;
       }
-    })// filtrando items por apenas um dos inputs
+    }) // filtrando items por apenas um dos inputs
     .filter((item) => {
       if (valor === "promocao") {
         return item.promocao === true;
@@ -75,19 +78,19 @@ const ProdutosContainer = (props) => {
       }
     }) //FILTRO PARA PRODUTOS EM PROMOÇÃO
     .filter((item) => {
-      if(category !== ""){
-        return item.categoria === category
-      }else{
-        return item
+      if (category !== "") {
+        return item.categoria === category;
+      } else {
+        return item;
       }
     }) //FILTRO DAS CATEGORIAS
     .sort(() => {
       if (valor === "menor") {
-          return 1
+        return 1;
       } else if (valor === "maior") {
-          return -1
+        return -1;
       }
-    })//ORDENAÇÃO
+    }) //ORDENAÇÃO
     .map((item) => (
       <li key={item.id}>
         <Card
@@ -114,39 +117,47 @@ const ProdutosContainer = (props) => {
       <div className="Produtos">
         <h2>
           Produtos
-
           <div className="selects">
-          <input type="Number" placeholder="Digite o valor Minimo" value={minFilter} onChange={(e) => filtroMinimo(e)}/>
-          <input type="Number" placeholder="Digite o valor Maximo" value={maxFilter} onChange={(e) => filtroMaximo(e)}/>
+            <input
+              type="Number"
+              placeholder="Digite o valor Minimo"
+              value={minFilter}
+              onChange={(e) => filtroMinimo(e)}
+            />
+            <input
+              type="Number"
+              placeholder="Digite o valor Maximo"
+              value={maxFilter}
+              onChange={(e) => filtroMaximo(e)}
+            />
 
-          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
-            <option value={0}>Selecione</option>
-            <option value={"promocao"}>Itens em promoção</option>
-            <option value={2000}>De 0 Ate $- 2.000,00</option>
-            <option value={15000}> Ate $- 15.000,00</option>
-            <option value={30000}> Ate $- 30.000,00</option>
-            <option value={50000}>até $- 50.000,00</option>
-            <option value={100000}>Ate $- 100.000,00</option>
-            <option value={500000}>até $- 500.000,00</option>
-          </Selecao>
+            <Selecao value={valor} onChange={(e) => filtroValor(e)}>
+              <option value={0}>Selecione</option>
+              <option value={"promocao"}>Itens em promoção</option>
+              <option value={2000}>De 0 Ate $- 2.000,00</option>
+              <option value={15000}> Ate $- 15.000,00</option>
+              <option value={30000}> Ate $- 30.000,00</option>
+              <option value={50000}>até $- 50.000,00</option>
+              <option value={100000}>Ate $- 100.000,00</option>
+              <option value={500000}>até $- 500.000,00</option>
+            </Selecao>
 
-          <Selecao value={valor} onChange={(e) => filtroValor(e)}>
-            <option value="menor">Crescente</option>
-            <option value="maior">Decrecente</option>
-          </Selecao>
+            <Selecao value={valor} onChange={(e) => filtroValor(e)}>
+              <option value="menor">Crescente</option>
+              <option value="maior">Decrecente</option>
+            </Selecao>
 
-
-          <Selecao
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value={""}>Selecione por categoria</option>
-            <option value="Google">Google</option>
-            <option value="Monument">Monument</option>
-            <option value="NASA">NASA</option>
-            <option value="Roscosmos">Roscosmos</option>
-            <option value="Starship">Starship</option>
-          </Selecao>
+            <Selecao
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value={""}>Selecione por categoria</option>
+              <option value="Google">Google</option>
+              <option value="Monument">Monument</option>
+              <option value="NASA">NASA</option>
+              <option value="Roscosmos">Roscosmos</option>
+              <option value="Starship">Starship</option>
+            </Selecao>
           </div>
         </h2>
         <ul>{produtosListados}</ul>

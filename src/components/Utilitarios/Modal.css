@@ -1,0 +1,67 @@
+.Container-Modal {
+  width: 100%;
+  top: 12vh;
+  height: 88vh;
+  background-color: rgba(0, 0, 0, 0.6352941176);
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 600ms;
+}
+.Container-Modal .Exibir {
+  width: 85%;
+  height: 85%;
+  border-radius: 16px;
+  background-color: #ffffff;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 9000;
+}
+.Container-Modal .Exibir .Fechar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid black;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 4;
+}
+.Container-Modal .Exibir .Fechar img {
+  width: 85%;
+  height: 85%;
+  transition-duration: 200ms;
+}
+.Container-Modal .Exibir .Fechar img:hover {
+  transform: scale(1.2);
+}
+.Container-Modal .Exibir::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0.0117647059);
+  transition-duration: 400ms;
+  z-index: -10;
+}
+.Container-Modal .Exibir::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 26, 102);
+  border-radius: 8px;
+}
+.Container-Modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+@media only screen and (max-width: 480px) {
+  .Container-Modal {
+    top: 20vh;
+  }
+  .Container-Modal .Exibir {
+    width: 100%;
+  }
+}/*# sourceMappingURL=Modal.css.map */
