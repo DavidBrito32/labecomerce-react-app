@@ -84,11 +84,11 @@ const ProdutosContainer = (props) => {
         return item;
       }
     }) //FILTRO DAS CATEGORIAS
-    .sort(() => {
+    .sort((a, b) => {
       if (valor === "menor") {
-        return 1;
+        return a - b;
       } else if (valor === "maior") {
-        return -1;
+        return b - a;
       }
     }) //ORDENAÇÃO
     .map((item) => (
@@ -111,8 +111,8 @@ const ProdutosContainer = (props) => {
         />
       </li>
     ));
-
-  return (
+  
+    return (
     <>
       <div className="Produtos">
         <h2>
